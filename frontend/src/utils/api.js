@@ -4,23 +4,23 @@ class Api {
     this._token = token;
   }
  
-  getCards(token) {
+  getCards() {
     console.log(this._token);
     return fetch(`${this._address}cards`, {
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`
       }
     }).then(this._handleResponse)
   }
 
-  addCards({ name, link, token }) {
+  addCards({ name, link, }) {
    
     return fetch(`${this._address}cards`, {
       method: 'POST',
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
@@ -30,52 +30,52 @@ class Api {
     }).then(this._handleResponse)
   }
 
-  deleteCard(_id, token) {
+  deleteCard(_id) {
     return fetch(`${this._address}cards/${_id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
       }
     })
       .then(this._handleResponse)
   }
 
-  likeCard(id, token) {
+  likeCard(id) {
     return fetch(`${this._address}cards/${id}/likes`, {
       method: "PUT",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
       },
     }).then(this._handleResponse);
   }
 
-  unlikeCard(id, token) {
+  unlikeCard(id) {
     return fetch(`${this._address}cards/${id}/likes`, {
       method: "DELETE",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
       },
     }).then(this._handleResponse);
   }
 
-  getUserInfo(token) {
+  getUserInfo() {
     return fetch(`${this._address}users/me`, {
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
       }
     }).then(this._handleResponse)
   }
 
-  patchUserInfo({ name, about }, token) {
+  patchUserInfo({ name, about }) {
     return fetch(`${this._address}users/me`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -85,12 +85,12 @@ class Api {
     }).then(this._handleResponse)
   }
 
-  editUserAvatar(avatar, token) {
+  editUserAvatar(avatar) {
     return fetch(`${this._address}users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
