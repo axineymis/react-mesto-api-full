@@ -5,22 +5,21 @@ class Api {
   }
  
   getCards() {
-    console.log(this._token);
     return fetch(`${this._address}cards`, {
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`
+        authorization: this._token
       }
     }).then(this._handleResponse)
   }
 
-  addCards({ name, link, }) {
+  addCards({ name, link }) {
    
     return fetch(`${this._address}cards`, {
       method: 'POST',
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token,
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
@@ -35,7 +34,7 @@ class Api {
       method: 'DELETE',
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token
       }
     })
       .then(this._handleResponse)
@@ -46,7 +45,7 @@ class Api {
       method: "PUT",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token
       },
     }).then(this._handleResponse);
   }
@@ -56,7 +55,7 @@ class Api {
       method: "DELETE",
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token
       },
     }).then(this._handleResponse);
   }
@@ -65,7 +64,7 @@ class Api {
     return fetch(`${this._address}users/me`, {
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token
       }
     }).then(this._handleResponse)
   }
@@ -75,7 +74,7 @@ class Api {
       credentials: 'include',
       method: 'PATCH',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -90,7 +89,7 @@ class Api {
       method: 'PATCH',
       credentials: 'include',
       headers: {
-        authorization: `Bearer ${this._token}`,
+        authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -113,8 +112,7 @@ class Api {
 
   const api = new Api({
   address: 'https://api.domainname.axineymis.nomoreparties.sbs/',
-  //address: 'http://localhost:3001/', 
-  // token: 'test'
+  //address: 'http://localhost:3001/'
  });
 
 export default api;

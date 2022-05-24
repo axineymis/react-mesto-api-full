@@ -50,7 +50,7 @@ function App() {
 
       .then(([cards, userInfo]) => {
         setCurrentUser({ ...currentUser, ...userInfo });
-        setCards(cards.revers())
+        setCards(cards.reverse())
       })
       .catch((err) => {
         console.log('Promise.all', err);
@@ -166,8 +166,8 @@ function App() {
 
   function checkTocken() {
     const jwt = localStorage.getItem('jwt');
-    console.log(jwt);
     if (jwt) {
+      
       auth.getUser(jwt)
         .then(({ email }) => {
           setCurrentUser({ ...currentUser, email });
