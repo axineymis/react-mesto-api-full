@@ -32,6 +32,8 @@ function App() {
   const [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
   const [isDeleteCard, setIsDeleteCard]= React.useState('');
 
+  const [token, setToken] = React.useState("");
+
   const history = useHistory();
   const propsMain = {
     onEditProfile: handleEditProfileClick,
@@ -109,25 +111,25 @@ function App() {
   }
 
   function handleUpdateUser(currentUser) {
-    api.patchUserInfo({ name: currentUser.name, about: currentUser.about })
+    api.patchUserInfo({ currentUser }, token)
        .then((userInfo) => {
-         setCurrentUser(userInfo);
+        setCurrentUser({ ...currentUser, ...userInfo });
        })
        .catch((err) => `Не обновился профиль ${err}`);
   }
 
   function handleUpdateAvatar(avatar) {
     api
-      .editUserAvatar(avatar)
+      .editUserAvatar({avatar}, token)
       .then((userInfo) => {
-        setCurrentUser(userInfo);
+        setCurrentUser({...currentUser, userInfo});
       })
       .catch((err) => `Не удалось обновить аватар ${err}`);
   }
 
   function handleAddCard({ name, link }) {
     api
-      .addCards({ name, link })
+      .addCards({ name, link }, token)
       .then((newCard) => {
         setCards([newCard, ...cards]);
       })
@@ -152,8 +154,8 @@ function App() {
 
   function onHandleSubmitAuthorization(data) {
     auth.authorization(data)
-      .then(({ token }) => {
-        localStorage.setItem('jwt', token)
+      .then(({ res }) => {
+        localStorage.setItem('jwt', res.token)
         setLoggedIn(true)
         history.push('/')
       })
@@ -167,7 +169,7 @@ function App() {
   function checkTocken() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      
+      setToken(jwt);
       auth.getUser(jwt)
         .then(({ email }) => {
           setCurrentUser({ ...currentUser, email });
