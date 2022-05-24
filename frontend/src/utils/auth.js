@@ -49,6 +49,6 @@ class Auth {
     }
   }
   
-  const auth = new Auth('https://api.domainname.axineymis.nomoreparties.sbs/');
-  //const auth = new Auth('http://localhost:3001/');
+  //const auth = new Auth('https://api.domainname.axineymis.nomoreparties.sbs/');
+  const auth = new Auth('http://localhost:3001/');
   export default auth;
