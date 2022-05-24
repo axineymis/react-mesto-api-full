@@ -9,7 +9,7 @@ class Api {
     return fetch(`${this._address}cards`, {
       credentials: 'include',
       headers: {
-        aauthorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       }
     }).then(this._handleResponse)
   }
