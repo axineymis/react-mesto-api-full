@@ -1,0 +1,17 @@
+.popup__content-asssent {
+  background-color: white;
+  width: 431px;
+  height: 182px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 11px;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, .15);
+}
+
+@media screen and (max-width:700px) {
+    .popup__element_container {
+      width: 282px;
+    }
+  }

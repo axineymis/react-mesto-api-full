@@ -1,0 +1,13 @@
+.element {
+  display: grid;
+  background-color: #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 3%;
+  max-width: 282px;
+  position: relative;
+  
+  
+  /* width: 100%; */
+  /* max-height: 361px; */
+  /* outline: 2px solid red; */
+}

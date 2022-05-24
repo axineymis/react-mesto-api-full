@@ -1,0 +1,20 @@
+.profile__info {
+  display: grid;
+  max-width: 500px;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  /* outline: solid red 1px; */
+}
+
+@media screen and (max-width: 700px) {
+  .profile__info {
+  max-width: 290px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile__info {
+    max-width: 250px;
+    grid-template-columns: 230px auto;
+  }
+}

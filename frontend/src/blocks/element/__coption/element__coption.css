@@ -1,0 +1,7 @@
+.element__coption {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 21px;
+  margin-right: 17px;
+  max-width: 246px;
+}

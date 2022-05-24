@@ -1,0 +1,27 @@
+.profile__updateAvatar {
+    cursor: pointer;
+    transition: opacity 1s ease;
+    outline-style: none;
+    min-height: 26px;
+    min-width: 26px;
+    background: url('../../../images/EditIconAvatar.svg') transparent center no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 47px;
+    margin: -13px -13px 0 0;
+    border: none;
+    padding: 0;
+    opacity: 1;
+}
+
+  .profile__updateAvatar:hover ~ .profile__avatar {
+    opacity: 0.2;
+    z-index: 5;
+  }
+
+  @media screen and (max-width: 750px) {
+    .profile__updateAvatar {
+     top: 20%;
+     left: 47%;
+    }
+  }
