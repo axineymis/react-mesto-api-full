@@ -154,8 +154,8 @@ function App() {
 
   function onHandleSubmitAuthorization(data) {
     auth.authorization(data)
-      .then(({ res }) => {
-        localStorage.setItem('jwt', res.token)
+      .then(({ token }) => {
+        localStorage.setItem('jwt', token)
         setLoggedIn(true)
         history.push('/')
       })

@@ -111,6 +111,7 @@ class Api {
 }
 
   const api = new Api({
+  //address: 'https://domainname.axineymis.nomoredomains.xyz/',
   address: 'https://api.domainname.axineymis.nomoreparties.sbs/',
   //address: 'http://localhost:3001/'
  });
