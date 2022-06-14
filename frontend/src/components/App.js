@@ -48,7 +48,7 @@ function App() {
   React.useEffect(() => {
     checkTocken();
     if(loggedIn)
-    Promise.all([api.getCards(), api.getUserInfo()])
+    Promise.all([api.getCards(token), api.getUserInfo(token)])
 
       .then(([cards, userInfo]) => {
         setCurrentUser({ ...currentUser, ...userInfo });
@@ -129,7 +129,7 @@ function App() {
 
   function handleAddCard({ name, link }) {
     api
-      .addCards({ name, link }, token)
+      .addCards({ name, link, token})
       .then((newCard) => {
         setCards([newCard, ...cards]);
       })
