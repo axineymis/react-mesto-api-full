@@ -4,22 +4,22 @@ class Api {
     this._token = token;
   }
  
-  getCards() {
+  getCards(token) {
     return fetch(`${this._address}cards`, {
       credentials: 'include',
       headers: {
-        authorization: this._token
+        authorization: `Bearer ${token}`,
       }
     }).then(this._handleResponse)
   }
 
-  addCards({ name, link }) {
+  addCards({ name, link, token }) {
    
     return fetch(`${this._address}cards`, {
       method: 'POST',
       credentials: 'include',
       headers: {
-        authorization: this._token,
+        authorization: `Bearer ${token}`,
         'Content-type': 'application/json'
       },
       body: JSON.stringify({
@@ -29,52 +29,52 @@ class Api {
     }).then(this._handleResponse)
   }
 
-  deleteCard(_id) {
+  deleteCard(_id, token) {
     return fetch(`${this._address}cards/${_id}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
-        authorization: this._token
+        authorization: `Bearer ${token}`,
       }
     })
       .then(this._handleResponse)
   }
 
-  likeCard(id) {
+  likeCard(id, token) {
     return fetch(`${this._address}cards/${id}/likes`, {
       method: "PUT",
       credentials: 'include',
       headers: {
-        authorization: this._token
+        authorization: `Bearer ${token}`,
       },
     }).then(this._handleResponse);
   }
 
-  unlikeCard(id) {
+  unlikeCard(id, token) {
     return fetch(`${this._address}cards/${id}/likes`, {
       method: "DELETE",
       credentials: 'include',
       headers: {
-        authorization: this._token
+        authorization: `Bearer ${token}`,
       },
     }).then(this._handleResponse);
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._address}users/me`, {
       credentials: 'include',
       headers: {
-        authorization: this._token
+        authorization: `Bearer ${token}`,
       }
     }).then(this._handleResponse)
   }
 
-  patchUserInfo({ name, about }) {
+  patchUserInfo({ name, about }, token) {
     return fetch(`${this._address}users/me`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
-        authorization: this._token,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -84,12 +84,12 @@ class Api {
     }).then(this._handleResponse)
   }
 
-  editUserAvatar(avatar) {
+  editUserAvatar(avatar, token) {
     return fetch(`${this._address}users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: {
-        authorization: this._token,
+        authorization: `Bearer ${token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -111,8 +111,9 @@ class Api {
 }
 
   const api = new Api({
-  //address: 'https://api.domainname.axineymis.nomoreparties.sbs/',
-  address: 'http://localhost:3001/'
+  //address: 'https://domainname.axineymis.nomoredomains.xyz/',
+  address: 'https://api.domainname.axineymis.nomoreparties.sbs/',
+  //address: 'http://localhost:3001/'
  });
 
 export default api;
