@@ -63,7 +63,7 @@ function App() {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     api.changeLikeCard(card._id, isLiked)
        .then((newCard) => {
-         setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
        })
        .catch((err) => {
          console.log('handleCardLike', err);
@@ -111,16 +111,16 @@ function App() {
   }
 
   function handleUpdateUser(currentUser) {
-    api.patchUserInfo({ currentUser }, token)
+    api.patchUserInfo({ name: currentUser.name, about: currentUser.about }, token)
        .then((userInfo) => {
-        setCurrentUser({ ...currentUser, ...userInfo });
+         setCurrentUser(userInfo);
        })
        .catch((err) => `Не обновился профиль ${err}`);
   }
 
   function handleUpdateAvatar(avatar) {
     api
-      .editUserAvatar({avatar}, token)
+    .editUserAvatar({avatar}, token)
       .then((userInfo) => {
         setCurrentUser({...currentUser, userInfo});
       })
@@ -129,7 +129,7 @@ function App() {
 
   function handleAddCard({ name, link }) {
     api
-      .addCards({ name, link, token})
+    .addCards({ name, link, token})
       .then((newCard) => {
         setCards([newCard, ...cards]);
       })
