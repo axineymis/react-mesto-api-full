@@ -93,7 +93,6 @@ function App() {
   }
   
   function handleDeletePopupOpen(card) {
-    console.log(34)
     setIsDeletePopupOpen(true);
     setIsDeleteCard(card._id);
   }
