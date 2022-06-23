@@ -99,7 +99,11 @@ class Api {
   }
 
   changeLikeCard(id, isLiked) {
-    return isLiked ? this.unlikeCard(id) : this.likeCard(id);
+    if (isLiked === true) {
+      return this.unlikeCard(id)
+    } else {
+      return this.likeCard(id)
+    }
   }
 
   _handleResponse = (response) => {
