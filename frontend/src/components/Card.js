@@ -9,9 +9,7 @@ function Card(props) {
       isOwn ? "element__delete-btn" : "element__delete_hidden"
     }`;
 
-    // console.log(props.card.likes.some((i) => i._id === currentUser._id));
-    // console.log(currentUser._id);
-    // console.log(props.card.likes.some((i) => i._id));
+   
     const isLiked = props.card.likes.some((i) => i === currentUser._id);
   
     const cardLikeButtonClassName = `${

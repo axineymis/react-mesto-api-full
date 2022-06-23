@@ -111,18 +111,24 @@ function App() {
   }
 
   function handleUpdateUser(currentUser) {
-    api.patchUserInfo({ name: currentUser.name, about: currentUser.about }, token)
-       .then((userInfo) => {
-         setCurrentUser(userInfo);
+    api
+    .patchUserInfo({ name: currentUser.name, about: currentUser.about }, token)
+    .then((userInfo) => {
+      setCurrentUser((state) => {
+        return { ...state, ...userInfo };
+      });
        })
-       .catch((err) => `Не обновился профиль ${err}`);
+    .catch((err) => `Не обновился профиль ${err}`);
+       
   }
 
   function handleUpdateAvatar(avatar) {
     api
-    .editUserAvatar({avatar}, token)
+      .editUserAvatar(avatar, token)
       .then((userInfo) => {
-        setCurrentUser({...currentUser, userInfo});
+        setCurrentUser((state) => {
+          return { ...state, ...userInfo };
+        });
       })
       .catch((err) => `Не удалось обновить аватар ${err}`);
   }
