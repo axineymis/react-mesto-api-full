@@ -10,7 +10,6 @@ const {
   getMe,
 } = require('../controllers/users');
 
-// router.post("/", createUser);
 router.get('/', getUsers);
 router.get('/me', getMe);
 router.get('/:userId', celebrate({
@@ -21,12 +20,7 @@ router.get('/:userId', celebrate({
 
 router.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
-    // avatar: Joi.string()
-    //   .pattern(
-    //     /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/,
-    //   )
-    //   .required(),
-    avatar: Joi.string(),
+    avatar: Joi.string().pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w.-]+)+[\w\-._~:/?#[\]@!$&'()*+,;=.]+$/).required(),
   }),
 }), patchAvatar);
 router.patch('/me', celebrate({
