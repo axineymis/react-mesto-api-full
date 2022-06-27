@@ -5,12 +5,13 @@ require('dotenv').config();
 const { JWT_SECRET_KEY = 'test' } = process.env;
 
 module.exports = (req, res, next) => {
-  const tmpAuthorization = req.headers.authorization;
-  const jwtAuthorization = tmpAuthorization.split(' ')[1];
+  // const tmpAuthorization = req.headers.authorization;
+  // const jwtAuthorization = tmpAuthorization.split(' ')[1];
   const cookieAuthorization = req.cookies.jwt;
-  console.log('cookieAuthorization =');
-  console.log(req);
-  if (!cookieAuthorization && !jwtAuthorization) {
+  // if (!cookieAuthorization && !jwtAuthorization) {
+  //   return next(new AuthorizationError('Ошибка авторизации'));
+  // }
+  if (!cookieAuthorization) {
     return next(new AuthorizationError('Ошибка авторизации'));
   }
   let payload;
