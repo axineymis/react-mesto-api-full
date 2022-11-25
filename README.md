@@ -20,3 +20,29 @@
 Сайт - https://domainname.axineymis.nomoredomains.xyz
 
 API - https://api.domainname.axineymis.nomoreparties.sbs
+
+### 🚀 Запуск проекта (локально):
+
+- Клонируйте репозиторий
+
+```bash
+  git clone git@github.com:axineymis/movies-explorer-api.git
+```
+
+- Перейдите в директорию проекта
+
+```bash
+  cd movies-explorer-api
+```
+
+- Установите зависимости
+
+```bash
+  npm install
+```
+
+- Запустите проект
+
+```bash
+  npm run start
+```
