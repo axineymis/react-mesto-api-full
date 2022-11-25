@@ -26,7 +26,7 @@ API - https://api.domainname.axineymis.nomoreparties.sbs
 - Клонируйте репозиторий
 
 ```bash
-  git clone git@github.com:axineymis/movies-explorer-api.git
+  git clone https://github.com/axineymis/react-mesto-api-full.git
 ```
 
 - Перейдите в директорию проекта
