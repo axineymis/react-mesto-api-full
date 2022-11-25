@@ -32,7 +32,7 @@ API - https://api.domainname.axineymis.nomoreparties.sbs
 - Перейдите в директорию проекта
 
 ```bash
-  cd movies-explorer-api
+  cd react-mesto-api-full
 ```
 
 - Установите зависимости
